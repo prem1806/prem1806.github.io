@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>Assignment for a Frontend AngularJs Developer</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/Chart.js"></script>
+</head>
+<body>
+	<div class="container" ng-controller="myctrl">
+		<div class="row">
+			<div class="col-md-12 head"></div>
+		</div>
+		<div class="row search_part">
+			<div class="col-md-8 offset-md-3">
+				<div class="input-group mt-3 mb-3">
+				  	<input type="search" class="form-control" id="title" placeholder="Whitch movie you are looking for ?" aria-label="Recipient's username" aria-describedby="button-addon2">	  
+				    <button class="btn btn-outline-secondary" ng-click="sub()" type="button" id="button-addon2">submit</button>
+				</div>
+				
+			</div>
+		</div>
+		<div class="row main" ng-style="{'background-image':'url({{list_data.bgimg}})'}">
+			<div class="col-md-4 nopadding">
+				<div class="lest_side mb-3">
+					<div class="card_part" ng-show="my" id="lside">
+						<div class="card mb-2" ng-repeat="x in list_data">
+							<div class="Lside_head">
+								<img class="card-img-top float-left" ng-src="{{x.img}}" alt="Card image cap">
+								<div class="float-left ml-2 mt-2 half_details">
+									<p class="mt-2"><span ng-bind="x.original_title"></span></p>
+									<p class="mt-1">Released Date: <span ng-bind="x.release_date"></span></p>
+									<p class="mt-1">Poplarity: <span ng-bind="x.vote_average"></span>/10</p>
+								</div>								
+							</div>							
+							<div class="card-body">								
+							    <p class="card-text" ng-bind="x.overview"></p>
+							    <a href="#" class="btn btn-primary" ng-click="moreinfo(x,$index)">more_info</a>
+							</div>
+						</div> 
+					</div>                                                                    
+				</div>
+			</div>
+			<div class="col-md-8 nopadding main_part" ng-show="myvar">
+				<div class=" row">
+					<div class="col-md-4">
+						<img ng-src={{more_data.img}} width="100%">
+					</div>
+					<div class="col-md-8 full_details">
+					  	<h2 ng-bind="more_data.original_title"></h2>
+					  	<p class="score"><span ng-bind="userscore"></span><sup>%</sup></p> 
+					  	<p class="mt-1">Released Date: <span ng-bind="more_data.release_date"></span></p> 	
+					  	<p><b>OverView</b><br>
+					  		<span ng-bind="more_data.overview"></span>
+					  	</p>
+					  	<p class="love_score"><span ng-bind="lscore"></span></p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/myapp.js"></script>
+	<script type="text/javascript" src="js/myctrl.js"></script>
+	
+</body>
+</html>
