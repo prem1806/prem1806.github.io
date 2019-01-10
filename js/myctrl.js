@@ -5,6 +5,7 @@ app.controller("myctrl",["$scope","$http","$interval",function($scope,$http,$int
 		var s= document.getElementById("title").value;
 			// console.log(s);
 			var api = "https://api.themoviedb.org/3/search/movie?api_key=2bcc8bc7932766f61ccf677eaa208209&language=en-US&query="+s+"&page=1&include_adult=false";
+			var trending = "https://api.themoviedb.org/3/trending/all/day?api_key=2bcc8bc7932766f61ccf677eaa208209";
 		$http.get(api).then(function(response){
 	        $scope.details = response.data;
 	        $scope.d= $scope.details.results;
